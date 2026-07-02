@@ -12,8 +12,10 @@ Manually identifying plant diseases requires expert knowledge that isn't always 
 - **Evaluation:** Tracked train/val accuracy and loss per epoch; [add your final confusion matrix / precision / recall / F1 results here]
 
 ## Results
-- Achieved **XX%** validation accuracy after 10 epochs
-- [Add confusion matrix screenshot or key insights here once trained]
+- Achieved **80% validation accuracy** across 10 tomato disease classes after 4 epochs of transfer learning
+- Trained on a class-balanced subset of the PlantVillage dataset (250 images/class train, 60 images/class validation)
+- Model shows steadily improving accuracy each epoch (38% → 66% → 77% → 80%), indicating good convergence without overfitting
+- Classes covered: Bacterial spot, Early blight, Late blight, Leaf Mold, Septoria leaf spot, Spider mites (Two-spotted), Target Spot, Tomato Yellow Leaf Curl Virus, Tomato mosaic virus, and Healthy
 
 ## Tech Stack
 - **Model training:** PyTorch, torchvision
@@ -24,6 +26,7 @@ Manually identifying plant diseases requires expert knowledge that isn't always 
 ```
 plant-disease-classifier/
 ├── data/               # train/val image folders (not included — download from Kaggle)
+├── split_dataset.py    # splits raw dataset into train/val folders
 ├── train.py            # training script
 ├── app.py              # Streamlit inference app
 ├── requirements.txt
@@ -32,16 +35,21 @@ plant-disease-classifier/
 
 ## How to Run
 
-1. Download the [PlantVillage dataset](https://www.kaggle.com/datasets/emmarex/plantdisease) and organize into `data/train/<class_name>/` and `data/val/<class_name>/` folders (80/20 split recommended)
-2. Install dependencies:
+1. Download the [PlantVillage dataset](https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset) and extract it
+2. Update `SOURCE_DIR` in `split_dataset.py` to point to the extracted `color` folder, then run:
+   ```bash
+   python split_dataset.py
+   ```
+   This creates `data/train/` and `data/val/` folders with an 80/20 split across the selected tomato disease classes.
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-3. Train the model:
+4. Train the model:
    ```bash
    python train.py
    ```
-4. Run the app locally:
+5. Run the app locally:
    ```bash
    streamlit run app.py
    ```
