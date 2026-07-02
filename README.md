@@ -55,7 +55,7 @@ plant-disease-classifier/
    ```
 
 ## Live Demo
-[Add your Hugging Face Spaces / Streamlit Cloud link here once deployed]
+🚀 Try it live: [huggingface.co/spaces/Aditi-rwt08/plant-disease-classifier](https://huggingface.co/spaces/Aditi-rwt08/plant-disease-classifier)
 
 ## Future Improvements
 - Expand to multiple crop types beyond the initial scope
