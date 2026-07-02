@@ -1,0 +1,19 @@
+# Virtual environment
+venv/
+
+# Dataset (too large for GitHub, download separately)
+data/
+
+# Trained model weights (optional — large files; remove this line if you want to include it)
+plant_disease_model.pth
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
